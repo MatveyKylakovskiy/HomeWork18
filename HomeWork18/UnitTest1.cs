@@ -1,6 +1,5 @@
 using HomeWork18.WebElements;
 using PageObjLib.Factories;
-using PageObjLib.Page;
 using Xunit;
 using TheoryAttribute = Xunit.TheoryAttribute;
 
@@ -46,13 +45,19 @@ namespace HomeWork18
         }
 
         //Third Task
-
+        [Theory(DisplayName = "Drop")]
+        [TestCase(false)]
+        public void Drop(bool expected)
+        {
+            Dropdown.IsSelected();
+            Assert.Pass();
+        }
 
         [TearDown]
         public void TreadDown()
         {
-            Driver.QuitDriver();
-            Driver.DisposeDriver();
+            //Driver.QuitDriver();
+            //Driver.DisposeDriver();
         }
     }
 }

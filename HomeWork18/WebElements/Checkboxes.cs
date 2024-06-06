@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using PageObjLib.Factories;
-using PageObjLib.Page;
+using PageObjLib.Pages;
 using SeleniumExtras.WaitHelpers;
 
 namespace HomeWork18.WebElements

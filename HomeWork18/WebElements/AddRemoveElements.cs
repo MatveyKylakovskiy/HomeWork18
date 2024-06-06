@@ -1,5 +1,5 @@
-﻿using PageObjLib.Page;
-using PageObjLib.Factories;
+﻿using PageObjLib.Factories;
+using PageObjLib.Pages;
 using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 

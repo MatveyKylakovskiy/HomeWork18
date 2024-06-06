@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <Reference Include="PageObjLib">
-      <HintPath>..\..\PageObj\PageObjLib.dll</HintPath>
+      <HintPath>..\..\PageObjLib\PageObjLib\bin\Debug\net8.0\PageObjLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 
