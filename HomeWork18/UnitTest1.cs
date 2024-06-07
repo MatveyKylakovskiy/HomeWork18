@@ -45,19 +45,90 @@ namespace HomeWork18
         }
 
         //Third Task
-        [Theory(DisplayName = "Drop")]
-        [TestCase(false)]
-        public void Drop(bool expected)
+        [Theory(DisplayName = "IsSelectedAll")]
+        [TestCase(true)]
+        public void DropDownAll(bool expected)
         {
-            Dropdown.IsSelected();
-            Assert.Pass();
+            Assert.That(Dropdown.IsSelected(), Is.EqualTo(expected));
         }
+
+        [Theory(DisplayName = "IsSelected1")]
+        [TestCase(true)]
+        public void DropDown1(bool expected)
+        {
+            Assert.That(Dropdown.IsSelected(1), Is.EqualTo(expected));
+        }
+
+        [Theory(DisplayName = "IsSelected2")]
+        [TestCase(true)]
+        public void DropDown2(bool expected)
+        {
+            Assert.That(Dropdown.IsSelected(2), Is.EqualTo(expected));
+        }
+
+        //Fourts Task
+        [Theory(DisplayName = "InputDigitTest")]
+        [TestCase(5, 2, 1)]
+        public void InputDigit(int number, int arrowUpCount, int arrouDownCount)
+        {
+            Assert.IsTrue(Inputs.IsInputting(number, arrowUpCount, arrouDownCount));
+        }
+
+        [Theory(DisplayName = "InputString1")]
+        [TestCase("asdd", 0, 0)]
+        public void InputString1(string str, int arrowUpCount, int arrouDownCount)
+        {
+            Assert.IsTrue(Inputs.IsInputting(str, arrowUpCount, arrouDownCount));
+        }
+
+        [Theory(DisplayName = "InputString2")]
+        [TestCase("asdd", 5, 1)]
+        public void InputString2(string str, int arrowUpCount, int arrouDownCount)
+        {
+            Assert.IsTrue(Inputs.IsInputting(str, arrowUpCount, arrouDownCount));
+        }
+
+        [Theory(DisplayName = "InputE")]
+        [TestCase(1, 1, 0, 0)]
+        public void InputE1(int number, int exponent, int arrowUpCount, int arrouDownCount)
+        {
+            Assert.IsTrue(Inputs.InputE(number, exponent, arrowUpCount, arrouDownCount));
+        }
+
+        [Theory(DisplayName = "InputEAndArrow")]
+        [TestCase(2, 2, 5, 2)]
+        public void InputE2(int number, int exponent, int arrowUpCount, int arrouDownCount)
+        {
+            Assert.IsTrue(Inputs.InputE(number, exponent, arrowUpCount, arrouDownCount));
+        }
+
+        [Theory(DisplayName = "InputMaxValue")]
+        [TestCase("2e308", 2, 5)]
+        public void InputMaxValue(string value, int arrowUpCount, int arrouDownCount)
+        {
+            Assert.IsTrue(Inputs.InputBoundaryValue(value, arrowUpCount, arrouDownCount));
+        }
+
+        [Theory(DisplayName = "InputMinValue")]
+        [TestCase("-2e308", 3, 7)]
+        public void InputMinValue(string value, int arrowUpCount, int arrouDownCount)
+        {
+            Assert.IsTrue(Inputs.InputBoundaryValue(value, arrowUpCount, arrouDownCount));
+        }
+
+        [Theory(DisplayName = "InputToLongValue")]
+        [TestCase(4, 7)]
+        public void InputToLongValue(int arrowUpCount, int arrouDownCount)
+        {
+            Assert.IsTrue(Inputs.InputToLongValue(arrowUpCount, arrouDownCount));
+        }
+
 
         [TearDown]
         public void TreadDown()
         {
-            //Driver.QuitDriver();
-            //Driver.DisposeDriver();
+            Driver.QuitDriver();
+            Driver.DisposeDriver();
         }
     }
 }

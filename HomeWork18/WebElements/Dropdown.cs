@@ -37,6 +37,16 @@ namespace HomeWork18.WebElements
             }
         }
 
+        public static bool IsSelected(int itemNumber)
+        {
+            Page.GoUrl(_url);
+
+            elements()[0].Click();
+            elements()[itemNumber].Click();
+
+            return elements()[itemNumber].GetAttribute("selected").Equals("true");
+        }
+
 
     }
 }
