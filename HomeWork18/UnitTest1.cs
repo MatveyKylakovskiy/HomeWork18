@@ -131,6 +131,68 @@ namespace HomeWork18
             Assert.IsTrue(Typos.SpellCheck());
         }
 
+        //Sixth Task Table
+        [Theory(DisplayName = "Table1_CorrectElement_Test1")]
+        [TestCase("jsmith@gmail.com", 1, 1, 1, 3, true)]
+       // [TestCase("$51.00", 1, 1, 2, 4, true)]
+        public void Table1Test1(string value, int table, int body, int tr, int td, bool expected)
+        {
+            Assert.That(SortableDataTables.IsCorrectElement(value, table, body, tr, td), Is.EqualTo(expected));
+        }
+
+        [Theory(DisplayName = "Table1_CorrectElement_Test2")]
+        [TestCase("$51.00", 1, 1, 2, 4, true)]
+        public void Table1Test2(string value, int table, int body, int tr, int td, bool expected)
+        {
+            Assert.That(SortableDataTables.IsCorrectElement(value, table, body, tr, td), Is.EqualTo(expected));
+        }
+
+        [Theory(DisplayName = "Table2_CorrectElement_Test1")]
+        [TestCase("http://www.jdoe.com", 2, 1, 3, 5, true)]
+        public void Table2Test1(string value, int table, int body, int tr, int td, bool expected)
+        {
+            Assert.That(SortableDataTables.IsCorrectElement(value, table, body, tr, td), Is.EqualTo(expected));
+        }
+
+        [Theory(DisplayName = "Table2_CorrectElement_Test2")]
+        [TestCase("Tim", 2, 1, 4, 2, true)]
+        public void Table2Test2(string value, int table, int body, int tr, int td, bool expected)
+        {
+            Assert.That(SortableDataTables.IsCorrectElement(value, table, body, tr, td), Is.EqualTo(expected));
+        }
+
+        [Theory(DisplayName = "SortableOrder")]
+        [TestCase(1, 1)]
+        public void SortableOrder(int tableNumber, int collumNumber)
+        {
+            var  d = SortableDataTables.IsSortableOrder(tableNumber, collumNumber);
+            Assert.IsTrue(d);
+        }
+
+        [Theory(DisplayName = "SortableDescending")]
+        [TestCase(2, 2)]
+        public void SortableDescending(int tableNumber, int collumNumber)
+        {
+            var d = SortableDataTables.IsSortableDescending(tableNumber, collumNumber);
+            Assert.IsTrue(d);
+        }
+
+        [Theory(DisplayName = "UnSortable")]
+        [TestCase(2, 2)]
+        public void UnSortable(int tableNumber, int collumNumber)
+        {
+            var d = SortableDataTables.IsUnSortable(tableNumber, collumNumber);
+            Assert.IsTrue(d);
+        }
+
+        [Theory(DisplayName = "Edit")]
+        [TestCase(true)]
+        public void Edit(bool expected)
+        {
+            Assert.That(SortableDataTables.ClickEdit(), Is.EqualTo(expected));
+        }
+
+
         [TearDown]
         public void TreadDown()
         {
