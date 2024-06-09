@@ -91,7 +91,7 @@ namespace HomeWork18.WebElements
         {
             Page.GoUrl(_url);
 
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < (new Random().Next(18, 20)); i++)
             {
                 InputStr(long.MaxValue.ToString());
             }

@@ -7,7 +7,7 @@ namespace HomeWork18
 {
     public class Tests
     {
-        //First Task
+        //First Task Add/Remove Elements
         [Theory(DisplayName = "AddRemoveTest")]
         [TestCase(1)]
         public void AddRemoveTest(int expected)
@@ -15,7 +15,7 @@ namespace HomeWork18
             Assert.That(AddRemoveElements.GetCountOfElements(), Is.EqualTo(expected));
         }
 
-        //Second Task
+        //Second Task Checkboxes
         [Theory(DisplayName = "FirstCheckBoxUnChecked")]
         [TestCase(false)]
         public void FirstCheckBoxUnChecked(bool expected)
@@ -44,7 +44,7 @@ namespace HomeWork18
             Assert.That(Checkboxes.GetSatusAfterClick(2), Is.EqualTo(expected));
         }
 
-        //Third Task
+        //Third Task Dropdown
         [Theory(DisplayName = "IsSelectedAll")]
         [TestCase(true)]
         public void DropDownAll(bool expected)
@@ -66,7 +66,7 @@ namespace HomeWork18
             Assert.That(Dropdown.IsSelected(2), Is.EqualTo(expected));
         }
 
-        //Fourts Task
+        //Fourts Task Inputs
         [Theory(DisplayName = "InputDigitTest")]
         [TestCase(5, 2, 1)]
         public void InputDigit(int number, int arrowUpCount, int arrouDownCount)
@@ -123,6 +123,13 @@ namespace HomeWork18
             Assert.IsTrue(Inputs.InputToLongValue(arrowUpCount, arrouDownCount));
         }
 
+        //Fifth Task Typos
+        [Theory(DisplayName = "Typos")]
+        [Test]
+        public void TyposTest1()
+        {
+            Assert.IsTrue(Typos.SpellCheck());
+        }
 
         [TearDown]
         public void TreadDown()

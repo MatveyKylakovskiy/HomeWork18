@@ -9,7 +9,6 @@ namespace HomeWork18.WebElements
     {
         private static string _url = "https://the-internet.herokuapp.com/checkboxes";
         private static string _CheckBoxXpath = "//input[@type='checkbox']";
-
         private static List<IWebElement> ListOFCheckBox()
         {
             var elements = Driver.GetWait().Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.XPath(_CheckBoxXpath)));
