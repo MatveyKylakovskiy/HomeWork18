@@ -192,12 +192,22 @@ namespace HomeWork18
             Assert.That(SortableDataTables.ClickEdit(), Is.EqualTo(expected));
         }
 
+        //Seventh Task Hovers
+        [Theory(DisplayName = "Hover")]
+        [Test]
+        public void Hover()
+        {
+            Hovers.FK();
+
+            Assert.Pass();
+        }
+
 
         [TearDown]
         public void TreadDown()
         {
-            Driver.QuitDriver();
-            Driver.DisposeDriver();
+           // Driver.QuitDriver();
+            //Driver.DisposeDriver();
         }
     }
 }
