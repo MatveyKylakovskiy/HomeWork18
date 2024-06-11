@@ -6,7 +6,13 @@ using TheoryAttribute = Xunit.TheoryAttribute;
 namespace HomeWork18
 {
     public class Tests
-    {
+    {   
+        [SetUp]
+        public void Setup()
+        {
+            Driver.GetDriver();
+        }
+
         //First Task Add/Remove Elements
         [Theory(DisplayName = "AddRemoveTest")]
         [TestCase(1)]
@@ -206,8 +212,8 @@ namespace HomeWork18
         [TearDown]
         public void TreadDown()
         {
-           // Driver.QuitDriver();
-            //Driver.DisposeDriver();
+           Driver.QuitDriver();
+           Driver.DisposeDriver();
         }
     }
 }

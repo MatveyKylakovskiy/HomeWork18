@@ -15,7 +15,7 @@ namespace HomeWork18.WebElements
         {   
             Page.GoUrl(_url);
 
-            return CheckerTypos.IsDispayed("Sometimes you'll see a typo, other times you won't.");
+            return CheckerTypos.IsDispayed(webText.Text);
         }
     }
 }

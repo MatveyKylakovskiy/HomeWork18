@@ -15,26 +15,8 @@ namespace HomeWork18.WebElements
             return elements.ToList();
         }
 
-        private static bool IsChecked(int itemNumber)
-        {
-            if (IsCheckedHelper(itemNumber) == "null")
-            {
-                return false;
-            }
+        private static bool IsChecked(int itemNumber) => ListOFCheckBox()[itemNumber - 1].GetAttribute("checked") == "true";
 
-            else if (IsCheckedHelper(itemNumber) == "true")
-            {
-                return true;
-            }
-
-            else 
-            {
-                return false; 
-            }
-        }
-        private static string IsCheckedHelper(int itemNumber) => ListOFCheckBox()[itemNumber - 1].GetAttribute("checked");
-
-        
         public static bool GetStatus(int itemNumber)
         {
             Page.GoUrl(_url);

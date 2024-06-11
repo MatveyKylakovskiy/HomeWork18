@@ -9,18 +9,7 @@ namespace HomeWork18.Helpers
     {
         private const string _url = "https://languagetool.org/ru";
         private static IWebElement _input = Page.GetElement(By.XPath("//div[@class='lt-textarea__textarea welcome-editor__textarea']"));
-        public static bool IsDispayed(string text)
-        {
-            if (Result(text) == "")
-            {
-                return true;
-            }
-
-            else 
-            {
-                return false;
-            }
-        }
+        public static bool IsDispayed(string text) => Result(text) != "";
 
         public static string Result(string text)
         {
