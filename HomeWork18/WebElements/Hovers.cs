@@ -13,46 +13,43 @@ namespace HomeWork18.WebElements
     internal static class Hovers
     {
         private const string _url = "https://the-internet.herokuapp.com/hovers";
-        private const string _userXpath = "//*[@alt='User Avatar']";
+        private const string _userXpath = "(//*[@alt='User Avatar'])[{0}]";
         private const string _profileXpath = "//*[text()='View profile']";
-        private const string _user1 = "//a[@href='/users/1']";
+        private const string _userLink = "//a[@href='/users/{0}']";
 
-        private static IWebElement GetUser() => Page.GetElement(By.XPath(_userXpath));
-        public static string MoveToItem()
+        private static IWebElement ErrorText() => Page.GetElement(By.XPath("//*[text()='Not Found']"));
+
+        private static IWebElement GetUser(string numberOfUser) => Page.GetElement(By.XPath(string.Format(_userXpath, numberOfUser)));
+        public static bool MoveToItem(string numberOfUser)
         {
             Page.GoUrl(_url);
 
-            Page.GetActions().MoveToElement(GetUser()).Click().Build().Perform();
+            Page.GetActions().MoveToElement(GetUser(numberOfUser)).Click().Build().Perform();
 
-            Page.GetElement(By.XPath(_user1)).Click();
-
-            return Driver.GetDriver().Url;
+            Page.GetElement(By.XPath(string.Format(_userLink, numberOfUser))).Click();
+            
+            return ErrorText().Text == "Not Found" && Driver.GetDriver().Url == $"https://the-internet.herokuapp.com/users/{numberOfUser}";
         }
 
-        public static int GetStatusCode()
-        {
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(MoveToItem());
-                request.Method = WebRequestMethods.Http.Head;
-                request.AllowAutoRedirect = false;
-                request.Accept = @"*/*";
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                {
-                    return (int)response.StatusCode;
-                }
-            }
-            catch (WebException ex)
-            {
-                if (ex.Response == null)
-                    throw;
-                return (int)((HttpWebResponse)ex.Response).StatusCode;
-            }
-        }
-
-        public static void FK()
-        {
-            int a = GetStatusCode();
-        }
+        //public static int GetStatusCode()
+        //{
+        //    try
+        //    {
+        //        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(MoveToItem());
+        //        request.Method = WebRequestMethods.Http.Head;
+        //        request.AllowAutoRedirect = false;
+        //        request.Accept = @"*/*";
+        //        using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+        //        {
+        //            return (int)response.StatusCode;
+        //        }
+        //    }
+        //    catch (WebException ex)
+        //    {
+        //        if (ex.Response == null)
+        //            throw;
+        //        return (int)((HttpWebResponse)ex.Response).StatusCode;
+        //    }
+        //}
     }
 }

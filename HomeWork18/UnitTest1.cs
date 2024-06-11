@@ -1,4 +1,5 @@
 using HomeWork18.WebElements;
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 using PageObjLib.Factories;
 using Xunit;
 using TheoryAttribute = Xunit.TheoryAttribute;
@@ -62,6 +63,7 @@ namespace HomeWork18
         [TestCase(true)]
         public void DropDown1(bool expected)
         {
+            Driver.GetDriver();
             Assert.That(Dropdown.IsSelected(1), Is.EqualTo(expected));
         }
 
@@ -198,22 +200,41 @@ namespace HomeWork18
             Assert.That(SortableDataTables.ClickEdit(), Is.EqualTo(expected));
         }
 
-        //Seventh Task Hovers
-        [Theory(DisplayName = "Hover")]
-        [Test]
-        public void Hover()
+       //Seventh Task Hovers
+        [Theory(DisplayName = "Hover User1")]
+        [TestCase(true)]
+        public void HoverTest1(bool expected)
         {
-            Hovers.FK();
-
-            Assert.Pass();
+            Assert.That(Hovers.MoveToItem("1"), Is.EqualTo(expected));
         }
 
+        [Theory(DisplayName = "Hover User2")]
+        [TestCase(true)]
+        public void HoverTest2(bool expected)
+        {
+            Assert.That(Hovers.MoveToItem("2"), Is.EqualTo(expected));
+        }
+
+        [Theory(DisplayName = "Hover User3")]
+        [TestCase(true)]
+        public void HoverTest3(bool expected)
+        {
+            Assert.That(Hovers.MoveToItem("3"), Is.EqualTo(expected));
+        }
+
+        //Eights Task Notification
+        [Theory(DisplayName = "Notification Message Test")]
+        [TestCase(true)]
+        public void NotificationMessageTest(bool expected)
+        {
+            Assert.That(NotificationMessage.CheckNotifation(), Is.EqualTo(expected));
+        }
 
         [TearDown]
         public void TreadDown()
         {
-           Driver.QuitDriver();
-           Driver.DisposeDriver();
+            Driver.QuitDriver();
+            Driver.DisposeDriver();
         }
     }
 }
